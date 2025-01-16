@@ -1,0 +1,416 @@
+{{@includeFile("include/header.html")/}}
+<head>
+  <style>
+    body {
+      background: linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(207, 224, 229, 0.66) 100%
+      );
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .tab-content {
+      background: transparent;
+    }
+
+    .nav-pills {
+      background-color: #fff !important;
+    }
+
+    #innovation-tab {
+      margin-right: -5rem;
+      /* background: #12ABDB 0% 0% no-repeat padding-box; */
+      box-shadow: 0px 3px 6px #00000029;
+      border: 1px solid #12abdb;
+      border-radius: 10px;
+    }
+
+    #maturity-tab {
+      margin-right: -7rem;
+      margin-left: 2rem;
+      /* background: #12ABDB 0% 0% no-repeat padding-box; */
+      box-shadow: 0px 3px 6px #00000029;
+      border: 1px solid #12abdb;
+      border-radius: 10px;
+    }
+
+    #client-tab {
+      margin-right: -5rem;
+      /* background: #12ABDB 0% 0% no-repeat padding-box; */
+      box-shadow: 0px 3px 6px #00000029;
+      border: 1px solid #12abdb;
+      border-radius: 10px;
+    }
+
+    .nav-pills .nav-link2 {
+      color: #333;
+      background: transparent;
+      border-radius: 0;
+      text-align: left;
+      padding: 15px 30px;
+      margin: 1rem 0;
+      transition: all 0.3s;
+      margin-bottom: 1rem;
+    }
+
+    .nav-pills .nav-link2.active {
+      background-color: #00bcd4;
+      color: white;
+    }
+
+    .activity-item {
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+
+    .activity-checkbox {
+      margin-right: 15px;
+    }
+
+    .add-activity-btn {
+      background-color: white;
+      border: 1px solid #00bcd4;
+      color: #00bcd4;
+      padding: 5px 15px;
+      border-radius: 20px;
+    }
+
+    .header {
+      background-color: white;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    .date-filter {
+      border: 1px solid #ddd;
+      padding: 8px 15px;
+      border-radius: 5px;
+    }
+
+    .activities-dropdown {
+      border: 1px solid #ddd;
+      padding: 8px 15px;
+      border-radius: 5px;
+      margin-right: 15px;
+    }
+
+    .activities-outside-wrapper {
+      margin-top: 10rem !important;
+    }
+
+    .logo-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 3rem;
+      margin-right: 2rem;
+      margin-top: 3rem;
+    }
+
+    .logo-circle-wrapper {
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+      /* box-shadow: 0px 25px 99px #00000029; */
+      padding: 10px;
+      position: relative;
+    }
+
+    .logo-circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid #4caf50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      position: relative;
+    }
+
+    .logo-circle img {
+      max-width: 80%;
+      height: auto;
+    }
+
+    .innovation-scale-dashboard {
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, #ffc107 0%, #4caf50 100%);
+      border-radius: 3px;
+      position: relative;
+    }
+
+    .green-dot {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #4caf50;
+      border-radius: 50%;
+      top: 5px;
+      right: 5px;
+    }
+
+    .innovation-scale-wrapper {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140%;
+      background: white;
+      padding: 8px;
+      border-radius: 15px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .scale-number {
+      position: absolute;
+      left: 30%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 24px;
+      background: #ffc107;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .background-hand-image {
+      position: absolute;
+      bottom: -80px;
+      z-index: -9px;
+      opacity: 0.8;
+      left: 80px;
+    }
+
+    .background-hand-image img {
+      object-fit: cover;
+    }
+
+    .ActivityModalopener {
+      background: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid black;
+    }
+
+    .ActivityModalopener .fa-regular {
+      font-size: 50px;
+      font-weight: 500;
+    }
+
+    .header_search input {
+      border: 1px solid #ddd;
+      background: #fff;
+      border-radius: 30px;
+      padding: 8px;
+      color: #fff;
+      margin-left : 2rem;
+    }
+
+    .header_search input::placeholder {
+      color: #000;
+    }
+
+    @media (min-width: 1200px) {
+      .container-fluid {
+        max-width: 2025px; /* Set your desired width */
+      }
+    }
+  </style>
+</head>
+
+<!-- Header -->
+<div class="background-hand-image">
+  <img src="/public/images/hand-2.png" alt="" />
+</div>
+<!-- Main Content -->
+<div
+  class="container-fluid mt-4 activities-outside-wrapper"
+  style="margin-top: 5rem"
+>
+  <div class="row mb-4">
+    <div class="col-3">
+      <div></div>
+      <div></div>
+    </div>
+    <div class="col-8" style="margin-left: 4rem">
+      <div class="d-flex">
+        <div class="col d-flex justify-content-start align-items-center">
+          <select class="activities-dropdown">
+            <option>All activities</option>
+          </select>
+          <input type="date" class="date-filter" />
+          <div class="header_search">
+            <input type="text" placeholder="Search Activity.." />
+          </div>
+        </div>
+        <div>{{@includeFile("include/testing.html")/}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Left Side - Tabs -->
+    <div
+      class="col-3 d-flex justify-content-center align-items-start"
+      style="height: 60vh"
+    >
+      <!-- <div class="logo-container">
+        <div class="logo-circle">
+          <img
+            src="/public/images/Volvo-Logo.png"
+            alt="Volvo logo"
+          />
+        </div>
+        <div class="innovation-scale"></div>
+      </div> -->
+
+      <div class="logo-container">
+        <div class="logo-circle-wrapper">
+          <div class="logo-circle">
+            <div class="green-dot"></div>
+            <img src="/public/images/Volvo-Logo.png" alt="Volvo logo" />
+          </div>
+        </div>
+        <div class="innovation-scale-wrapper">
+          <div class="innovation-scale-dashboard">
+            <div class="scale-number">4</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+        <button
+          class="nav-link2 active"
+          id="innovation-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#innovation"
+          type="button"
+        >
+          Innovation Activities
+        </button>
+        <button
+          class="nav-link2"
+          id="maturity-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#maturity"
+          type="button"
+        >
+          Maturity Assessment
+        </button>
+        <button
+          class="nav-link2"
+          id="client-tab"
+          data-bs-toggle="pill"
+          data-bs-target="#client"
+          type="button"
+        >
+          Client Intel & Ideas
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Side - Content -->
+    <div class="col-8 d-flex flex-column" style="margin-left: 4rem">
+      <div class="tab-content" id="v-pills-tabContent">
+        <!-- Innovation Activities Content -->
+
+        <div class="tab-pane fade show active" id="innovation">
+          <hr />
+          <div class="activity-item d-flex align-items-center">
+            <input type="checkbox" class="activity-checkbox" />
+            <div class="flex-grow-1">
+              <p class="mb-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+              </p>
+              <small class="text-muted">Lorem ipsum</small>
+            </div>
+
+            <span class="me-5">Simple</span>
+            <span class="me-5">Simple</span>
+            <span class="me-3">Simple</span>
+            <button class="add-activity-btn">Add Activity</button>
+          </div>
+          <hr />
+          <div class="activity-item d-flex align-items-center">
+            <input type="checkbox" class="activity-checkbox" />
+            <div class="flex-grow-1">
+              <p class="mb-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+              </p>
+              <small class="text-muted">Lorem ipsum</small>
+            </div>
+
+            <span class="me-5">Simple</span>
+            <span class="me-5">Simple</span>
+            <span class="me-3">Simple</span>
+            <button class="add-activity-btn">Add Activity</button>
+          </div>
+          <hr />
+          <div class="activity-item d-flex align-items-center">
+            <input type="checkbox" class="activity-checkbox" />
+            <div class="flex-grow-1">
+              <p class="mb-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+              </p>
+              <small class="text-muted">Lorem ipsum</small>
+            </div>
+
+            <span class="me-5">Simple</span>
+            <span class="me-5">Simple</span>
+            <span class="me-3">Simple</span>
+            <button class="add-activity-btn">Add Activity</button>
+          </div>
+          <!-- Repeat activity items -->
+        </div>
+
+        <!-- Maturity Assessment Content -->
+        <div class="tab-pane fade" id="maturity">
+          <div class="activity-item d-flex align-items-center">
+            <input type="checkbox" class="activity-checkbox" />
+            <div class="flex-grow-1">
+              <p class="mb-0">Maturity Assessment Activity</p>
+              <small class="text-muted">Assessment details</small>
+            </div>
+            <span class="me-3">Medium</span>
+            <button class="add-activity-btn">Add Activity</button>
+          </div>
+        </div>
+
+        <!-- Client Intel Content -->
+        <div class="tab-pane fade" id="client">
+          <div class="activity-item d-flex align-items-center">
+            <input type="checkbox" class="activity-checkbox" />
+            <div class="flex-grow-1">
+              <p class="mb-0">Client Intel Activity</p>
+              <small class="text-muted">Client details</small>
+            </div>
+            <span class="me-3">Complex</span>
+            <button class="add-activity-btn">Add Activity</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+{{@includeFile("include/footer.html")/}}
